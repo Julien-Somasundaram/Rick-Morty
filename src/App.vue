@@ -1,31 +1,6 @@
-<script>
-import gql from 'graphql-tag'
-import { useQuery } from '@vue/apollo-composable'
-
-const CHARACTERS_QUERY = gql`
-  query Characters {
-    characters {
-      results {
-        id
-        name
-        image
-      }
-    }
-  }
-`
-
-export default {
-  name: 'App',
-  setup () {
-    const { result, loading, error } = useQuery(CHARACTERS_QUERY);
-    return {
-      result,
-      loading, 
-      error
-    }
-  }
-}
-
+<script setup lang="ts">
+// import HelloWorld from './components/HelloWorld.vue';
+import Characters from './components/Characteres.vue';
 </script>
 
 <style>
@@ -33,11 +8,7 @@ export default {
 </style>
 
 <template>
-  <p v-if="error">Something went wrong...</p>
-  <p v-if="loading">Loading...</p>
-  <p v-else v-for="character in result.characters.results" :key="character.id">
-    {{ character.name }}
-    image: <img :src="character.image" alt="character.name">
-  </p>
-  <div></div>
+  <h1>Bienvenue sur la page !</h1>
+  <!-- <HelloWorld msg="Bienvenue"/> -->
+  <Characters/>
 </template>
